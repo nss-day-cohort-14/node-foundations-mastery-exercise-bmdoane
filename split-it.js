@@ -9,7 +9,7 @@ const writeStream = Writable()
 writeStream._write = (buffer, encoding, cb) => {
 	//console.log('_write', buffer encoding)
 	process.stdout.write(`${buffer}\n`)
-	setTimeout(cb, 50)
+	setTimeout(cb, 500)
 
 }
 

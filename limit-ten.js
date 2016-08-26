@@ -8,7 +8,8 @@ const { map } = require('event-stream')
 let count = 0
 const findWord = map((line, cb) => {
 	// CLI args come in as strings and not necessary to interp
-	if (line.toString().startsWith(arg[0]) && (count < 10)) {
+	// toLowerCase used on condition and arg does not affect data stream
+	if (line.toString().toLowerCase().startsWith(arg[0].toLowerCase()) && (count < 10)) {
 		cb(null, line.toString())
 		count++
 	}

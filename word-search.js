@@ -2,14 +2,15 @@
 // @morecallan
 "use strict"
 
-
+const [,, ...arg] = process.argv
 const { createReadStream } = require('fs')
-const transformer = require('./limit-ten')
+const findWord = require('./limit-ten')
+const writeStream = require('./split-it')
 const { split } = require('event-stream')
 
 const readStream = createReadStream('/usr/share/dict/words')
 
 readStream
 	.pipe(split())
-	.pipe(transformer)
-	.pipe(process.stdout)
+	.pipe(findWord)
+	.pipe(writeStream)

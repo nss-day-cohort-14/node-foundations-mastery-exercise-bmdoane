@@ -12,7 +12,7 @@ const searchLimit = Transform({
 			cb(null, `${buffer.toString()}\n`)
 			count++
 		} else {
-		// This says don't pass anything down pipe
+		// This says don't pass anything down pipe above 10
 			cb()
 		}
 	}	

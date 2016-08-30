@@ -3,16 +3,12 @@
 
 // const { Transform } = require('stream')
 
-// const ts = Transform({
+// const delayStream = Transform({
 // 	// Enhanced object literal
 // 	transform (buff, enc, cb) {
-// 		setTimeout(() => cb(null, buff.toString()), 1000)	
+// 		setInterval(() => cb(null, buff.toString()), 1000)
+// 		// If this is last it should do stdout??	
 // 	}
 // })
 
-// // // Example of catching an error
-// // transformer.on('error', () => {
-// // 	console.log('I found an error')
-// // })
-
-// module.exports = ts
+// module.exports = delayStream

@@ -7,10 +7,11 @@ const { createReadStream } = require('fs')
 const { split, map } = require('event-stream')
 const searchLimit = require('./limit-ten')
 const path = require('path')
-const delay = require('./delay-it')
+// const delay = require('./delay-it')
+let searchWord = arg[0]
 
 // CLI args come in as strings and not necessary to interp
-if (arg[0]) {
+if (searchword) {
 	const readStream = createReadStream('/usr/share/dict/words')
 
 	readStream
@@ -19,7 +20,7 @@ if (arg[0]) {
 		// Filters data
 		.pipe(map((data, cb) => {
 				// toLowerCase used on condition and arg does not affect data stream
-				if (data.toString().toLowerCase().startsWith(arg[0].toLowerCase())) {
+				if (data.toString().toLowerCase().startsWith(searchWord.toLowerCase())) {
 					// This passes down pipe
 					cb(null, data)
 				} else {

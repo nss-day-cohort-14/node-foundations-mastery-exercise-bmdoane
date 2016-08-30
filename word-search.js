@@ -7,7 +7,7 @@ const { createReadStream } = require('fs')
 const { split, map } = require('event-stream')
 const searchLimit = require('./limit-ten')
 const path = require('path')
-// const delay = require('./delay-it')
+const delay = require('./delay-it')
 
 // CLI args come in as strings and not necessary to interp
 if (arg[0]) {
@@ -28,6 +28,7 @@ if (arg[0]) {
 				}
 		}))
 		.pipe(searchLimit)
+		.pipe(delay)
 		.pipe(process.stdout)
 } else {
 	// Placing if/else outside map, kept psw from repeating

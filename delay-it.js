@@ -1,18 +1,17 @@
 #!/usr/bin/env node
 "use strict"
 
-// const { Transform } = require('stream')
+#!/usr/bin/env node
+"use strict"
 
-// const ts = Transform({
-// 	// Enhanced object literal
-// 	transform (buff, enc, cb) {
-// 		setTimeout(() => cb(null, buff.toString()), 1000)	
-// 	}
-// })
+const { Transform } = require('stream')
 
-// // // Example of catching an error
-// // transformer.on('error', () => {
-// // 	console.log('I found an error')
-// // })
+const delayStream = Transform({
+	// Enhanced object literal
+	transform (buff, enc, cb) {
+		setInterval(() => cb(null, buff.toString()), 1000)
+		// If this is last it should do stdout??	
+	}
+})
 
-// module.exports = ts
+module.exports = delayStream
